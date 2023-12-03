@@ -1,3 +1,4 @@
+// game.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -13,4 +14,10 @@ export class GameService {
     const updatedGames = [...currentGames, game];
     this.gamesSubject.next(updatedGames);
   }
+
+  getGamesByGenre(genre: string) {
+    const allGames = this.gamesSubject.getValue();
+    return allGames.filter((game) => game.genre.name.toLowerCase() === genre.toLowerCase());
+  }
 }
+

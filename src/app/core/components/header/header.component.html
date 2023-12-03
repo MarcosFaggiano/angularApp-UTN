@@ -3,9 +3,16 @@
     <!-- <img width="" alt="" src="" /> -->
   </div>
   <span>EsTim</span>
-  <a routerLink="/" class="btn btn-outline-secondary">Inicio</a>
-  <button type="button" class="btn btn-danger btn-sm" (click)="navigateToGameForm()"
-    style="margin-left: auto; margin-right: 20px; padding: 5px;">
+  <a routerLink="/" class="btn btn-success btn-sm">Inicio</a>
+  <!-- ... (otros elementos) -->
+  <a (click)="showGamesByGenre('Adventure')" class="btn btn-secondary btn-sm ml-auto"
+    style="margin-left: auto;padding: 5px;">Aventura</a>
+  <a (click)="showGamesByGenre('Action')" class="btn btn-secondary btn-sm ml-auto"
+    style="margin-left: auto;padding: 5px;margin-right: 20px;">Acción</a>
+  <a (click)="showGamesByGenre('Strategy')" class="btn btn-secondary btn-sm ml-auto"
+    style="margin-left: auto;padding: 5px;margin-right: 20px;">Strategy</a>
+  <button type="button" class="btn btn-danger btn-sm ml-auto" (click)="navigateToGameForm()">
     Cargar Juegos
   </button>
+  <!-- Añade más botones según tus géneros -->
 </div>

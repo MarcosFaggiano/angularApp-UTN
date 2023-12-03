@@ -5,8 +5,7 @@ import { AppComponent } from './app.component';
 import { FeaturesModule } from './features/features.module';//solo me traigo este que tiene adentro los demas englobados
 import { HeaderComponent } from './core/components/header/header.component';
 import { FormsModule } from '@angular/forms';// importamos para poder usar fomularios
-
-
+import { GameService } from './game.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +18,7 @@ import { FormsModule } from '@angular/forms';// importamos para poder usar fomul
     FeaturesModule, // Registra el módulo de características
     FormsModule // Agrega FormsModule aquí
   ],
+  providers: [GameService], // lo tengo que incluir para que valla a toda la app
   bootstrap: [AppComponent]
 })
 export class AppModule { }
