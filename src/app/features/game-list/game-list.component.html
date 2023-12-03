@@ -1,0 +1,20 @@
+<div class="row card-container">
+  <div *ngFor="let game of gameList" class="col-lg-4 mb-4">
+    <div class="card mb-2">
+      <!-- <img src="assets/images/{{formatGameName(game.name)}}.jpg" class="card-img-top" alt="{{game.name}} Image"> -->
+      <div class="card-body">
+        <h5 class="card-title">{{game.name}}</h5>
+        <p class="card-text"><strong>CPU:</strong> {{game.reqCpu['CPU']}}</p>
+        <p class="card-text"><strong>RAM:</strong> {{game.reqCpu['RAM']}}</p>
+        <p class="card-text"><strong>HDD:</strong> {{game.reqCpu['HDD']}}</p>
+        <p class="card-text"><strong>Genre:</strong> {{game.genre['name']}}</p>
+        <p class="card-text"><strong>PEGI:</strong> {{game.genre['PEGI']}}</p>
+        <p class="card-text"><strong>Price:</strong> {{game.price}}</p>
+        <p class="card-text"><strong>Type:</strong> {{game.gameType}}</p>
+        <button type="button" class="btn btn-primary btn-sm" style="margin: 10px"
+          (click)="navigateToGameSell(game)">Comprar</button>
+        <button type="button" class="btn btn-warning btn-sm" (click)="navigateToGameLend()">Compartir</button>
+      </div>
+    </div>
+  </div>
+</div>

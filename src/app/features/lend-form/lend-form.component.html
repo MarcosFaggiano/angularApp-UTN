@@ -1,0 +1,15 @@
+<!-- lend-form.component.html -->
+
+<form (ngSubmit)="shareGame()" #gameForm="ngForm">
+  <div class="form-group">
+    <label for="gameTitle">Título del Juego</label>
+    <input type="text" id="gameTitle" name="gameTitle" [(ngModel)]="gameTitle" class="form-control" required>
+  </div>
+
+  <div class="form-group">
+    <label for="friendEmail">Correo del Amigo</label>
+    <input type="email" id="friendEmail" name="friendEmail" [(ngModel)]="friendEmail" class="form-control" required>
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary" [disabled]="gameForm.invalid">Compartir Juego</button>
+</form>

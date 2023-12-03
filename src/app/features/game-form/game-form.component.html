@@ -1,0 +1,52 @@
+<div class="content" role="main">
+  <h2>Cargar Juego</h2>
+  <form (submit)="submitForm()">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="name">Nombre del Juego:</label>
+          <input type="text" id="name" name="name" [(ngModel)]="newGame.name" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="cpu">CPU:</label>
+          <input type="text" id="cpu" name="cpu" [(ngModel)]="newGame.reqCpu.CPU" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="ram">RAM:</label>
+          <input type="text" id="ram" name="ram" [(ngModel)]="newGame.reqCpu.RAM" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="hdd">HDD:</label>
+          <input type="text" id="hdd" name="hdd" [(ngModel)]="newGame.reqCpu.HDD" class="form-control" required>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="genre">Género:</label>
+          <input type="text" id="genre" name="genre" [(ngModel)]="newGame.genre.name" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="pegi">PEGI:</label>
+          <input type="text" id="pegi" name="pegi" [(ngModel)]="newGame.genre.PEGI" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="price">Precio:</label>
+          <input type="text" id="price" name="price" [(ngModel)]="newGame.price" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="gameType">Tipo de Juego:</label>
+          <input type="text" id="gameType" name="gameType" [(ngModel)]="newGame.gameType" class="form-control" required>
+        </div>
+      </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+</div>

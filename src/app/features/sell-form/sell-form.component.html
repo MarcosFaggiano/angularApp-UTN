@@ -1,0 +1,42 @@
+<div class="content" role="main">
+  <h2>Vender Juego</h2>
+
+  <div *ngIf="sale.game">
+    <p><strong>Juego:</strong> {{ sale.game.name }}</p>
+    <p><strong>CPU:</strong> {{ sale.game.reqCpu.CPU }}</p>
+    <p><strong>RAM:</strong> {{ sale.game.reqCpu.RAM }}</p>
+    <p><strong>HDD:</strong> {{ sale.game.reqCpu.HDD }}</p>
+    <p><strong>Genre:</strong> {{ sale.game.genre.name }}</p>
+    <p><strong>PEGI:</strong> {{ sale.game.genre.PEGI }}</p>
+    <p><strong>Price:</strong> {{ sale.game.price }}</p>
+    <p><strong>Type:</strong> {{ sale.game.gameType }}</p>
+  </div>
+
+  <form (submit)="submitForm()">
+    <div class="form-group">
+      <label for="game">Juego:</label>
+      <select id="game" name="game" [(ngModel)]="sale.game" class="form-control" required>
+        <option *ngFor="let game of gameList" [value]="game.id">{{ game.name }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="buyerName">Nombre del Comprador:</label>
+      <input type="text" id="buyerName" name="buyerName" [(ngModel)]="sale.buyerName" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Precio de Venta:</label>
+      <input type="text" id="price" name="price" [(ngModel)]="sale.price" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="paymentMethod">Método de Pago:</label>
+      <input type="text" id="paymentMethod" name="paymentMethod" [(ngModel)]="sale.paymentMethod" class="form-control"
+        required>
+    </div>
+
+    <br>
+    <button type="submit" class="btn btn-success">Vender</button>
+  </form>
+</div>
