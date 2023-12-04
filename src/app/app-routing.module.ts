@@ -8,11 +8,12 @@ import { LendFormComponent } from './features/lend-form/lend-form.component';
 const routes: Routes = [
   {
     path: '',
-    component: GameListComponent, // Agrega esta línea
+    redirectTo: '/game-list', // Redirige a /game-list cuando se accede a la ruta raíz
+    pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: () => import('./features/features.module').then((m) => m.FeaturesModule),
+    path: 'game-list',
+    component: GameListComponent,
   },
   {
     path: 'game-form', // Agrega la ruta para GameFormComponent
