@@ -163,6 +163,3 @@ export class GameListComponent implements OnInit {
     this.router.navigate(['lend-form']);
   }
 }
-
-
-

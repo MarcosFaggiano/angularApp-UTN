@@ -1,3 +1,4 @@
+// header.component.ts
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { GameService } from '../../../game.service';
@@ -18,10 +19,9 @@ export class HeaderComponent {
   }
 
   showGamesByGenre(genre: string) {
-    const filteredGames = this.gameService.getGamesByGenre(genre);
-    console.log(`Juegos de ${genre}:`, filteredGames);
-    // Puedes hacer algo más con los juegos filtrados si es necesario
+    this.gameService.getGamesByGenre(genre);
   }
 }
+
 
 
