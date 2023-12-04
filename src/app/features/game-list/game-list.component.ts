@@ -1,6 +1,6 @@
 // game-list.component.ts
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { GameService } from '../../game.service';
 
 interface Game {
@@ -22,146 +22,307 @@ interface Game {
 @Component({
   selector: 'app-game-list',
   templateUrl: './game-list.component.html',
-  styleUrls: ['./game-list.component.css']
+  styleUrls: ['./game-list.component.css'],
 })
 export class GameListComponent implements OnInit {
   games: Game[] = [];
+  filteredGames: Game[] = [];
+  genreFilter: string | null = null;
 
-  constructor(private router: Router, private gameService: GameService) { }
+  constructor(private route: ActivatedRoute, private gameService: GameService) { }
 
-  ngOnInit() {
-    // Verificar si ya hay juegos en el servicio antes de agregar los nuevos
-    if (this.gameService.isEmpty()) {
-      // Arreglo de juegos para agregar al servicio
-      const newGames: Game[] = [
-        {
-          id: 0,
-          name: "The Witcher 3: Wild Hunt",
-          reqCpu: {
-            CPU: "Intel Core i5-2500K 3.3GHz / AMD Phenom II X4",
-            RAM: "6 GB",
-            HDD: "35 GB"
-          },
-          genre: {
-            name: "Adventure",
-            PEGI: "PEGI 18"
-          },
-          price: "$29.99",
-          gameType: "Single Player"
+  ngOnInit(): void {
+    // Agregar ejemplos de juegos al servicio
+    const exampleGames: Game[] = [
+      {
+        id: 0,
+        name: "The Witcher 3: Wild Hunt",
+        reqCpu: {
+          CPU: "Intel Core i5-2500K 3.3GHz / AMD Phenom II X4",
+          RAM: "6 GB",
+          HDD: "35 GB"
         },
-        {
-          id: 1,
-          name: "Uncharted 4: A Thief's End",
-          reqCpu: {
-            CPU: "Intel Core i5-3470 3.2GHz / AMD FX-8350",
-            RAM: "8 GB",
-            HDD: "50 GB"
-          },
-          genre: {
-            name: "Adventure",
-            PEGI: "PEGI 16"
-          },
-          price: "$39.99",
-          gameType: "Single Player"
+        genre: {
+          name: "Adventure",
+          PEGI: "PEGI 18"
         },
-        {
-          id: 2,
-          name: "The Legend of Zelda",
-          reqCpu: {
-            CPU: "Intel Core i5-7500 / AMD Ryzen 5 1600X",
-            RAM: "8 GB",
-            HDD: "30 GB"
-          },
-          genre: {
-            name: "Adventure",
-            PEGI: "PEGI 12"
-          },
-          price: "$49.99",
-          gameType: "Single Player"
+        price: "$29.99",
+        gameType: "Single Player"
+      },
+      {
+        id: 1,
+        name: "Uncharted 4: A Thief's End",
+        reqCpu: {
+          CPU: "Intel Core i5-3470 3.2GHz / AMD FX-8350",
+          RAM: "8 GB",
+          HDD: "50 GB"
         },
+        genre: {
+          name: "Adventure",
+          PEGI: "PEGI 16"
+        },
+        price: "$39.99",
+        gameType: "Single Player"
+      },
+      {
+        id: 2,
+        name: "The Legend of Zelda",
+        reqCpu: {
+          CPU: "Intel Core i5-7500 / AMD Ryzen 5 1600X",
+          RAM: "8 GB",
+          HDD: "30 GB"
+        },
+        genre: {
+          name: "Adventure",
+          PEGI: "PEGI 12"
+        },
+        price: "$49.99",
+        gameType: "Single Player"
+      },
 
-        // Acción:
-        {
-          id: 3,
-          name: "Call of Duty:Warfare",
-          reqCpu: {
-            CPU: "Intel Core i5-2500K / AMD Ryzen R5 1600X",
-            RAM: "12 GB",
-            HDD: "175 GB"
-          },
-          genre: {
-            name: "Action",
-            PEGI: "PEGI 18"
-          },
-          price: "$59.99",
-          gameType: "Multiplayer"
+      // Acción:
+      {
+        id: 3,
+        name: "Call of Duty:Warfare",
+        reqCpu: {
+          CPU: "Intel Core i5-2500K / AMD Ryzen R5 1600X",
+          RAM: "12 GB",
+          HDD: "175 GB"
         },
-        {
-          id: 4,
-          name: "Devil May Cry 5",
-          reqCpu: {
-            CPU: "Intel Core i7-4770 3.4GHz / AMD Ryzen 5 1600",
-            RAM: "8 GB",
-            HDD: "35 GB"
-          },
-          genre: {
-            name: "Action",
-            PEGI: "PEGI 18"
-          },
-          price: "$44.99",
-          gameType: "Single Player"
+        genre: {
+          name: "Action",
+          PEGI: "PEGI 18"
         },
+        price: "$59.99",
+        gameType: "Multiplayer"
+      },
+      {
+        id: 4,
+        name: "Devil May Cry 5",
+        reqCpu: {
+          CPU: "Intel Core i7-4770 3.4GHz / AMD Ryzen 5 1600",
+          RAM: "8 GB",
+          HDD: "35 GB"
+        },
+        genre: {
+          name: "Action",
+          PEGI: "PEGI 18"
+        },
+        price: "$44.99",
+        gameType: "Single Player"
+      },
 
-        // Estrategia:
-        {
-          id: 5,
-          name: "Sid Meier's Civilization VI",
-          reqCpu: {
-            CPU: " Intel Core i5-3470 3.2GHz / AMD FX-8350",
-            RAM: "8 GB",
-            HDD: "12 GB"
-          },
-          genre: {
-            name: "Strategy",
-            PEGI: "PEGI 12"
-          },
-          price: "$29.99",
-          gameType: "Single Player"
+      // Estrategia:
+      {
+        id: 5,
+        name: "Sid Meier's Civilization VI",
+        reqCpu: {
+          CPU: " Intel Core i5-3470 3.2GHz / AMD FX-8350",
+          RAM: "8 GB",
+          HDD: "12 GB"
         },
-        {
-          id: 6,
-          name: "StarCraft II: Wings of Liberty",
-          reqCpu: {
-            CPU: "Intel Core i3-530 / AMD Phenom II X4 910",
-            RAM: "4 GB",
-            HDD: "30 GB"
-          },
-          genre: {
-            name: "Strategy",
-            PEGI: "PEGI 12"
-          },
-          price: "$19.99",
-          gameType: "Multiplayer"
-        }
-        // ... (otros juegos)
-      ];
+        genre: {
+          name: "Strategy",
+          PEGI: "PEGI 12"
+        },
+        price: "$29.99",
+        gameType: "Single Player"
+      },
+      {
+        id: 6,
+        name: "StarCraft II: Wings of Liberty",
+        reqCpu: {
+          CPU: "Intel Core i3-530 / AMD Phenom II X4 910",
+          RAM: "4 GB",
+          HDD: "30 GB"
+        },
+        genre: {
+          name: "Strategy",
+          PEGI: "PEGI 12"
+        },
+        price: "$19.99",
+        gameType: "Multiplayer"
+      }
+    ];
 
-      // Agregar los nuevos juegos al servicio
-      this.gameService.addGamesList(newGames);
+    for (const game of exampleGames) {
+      this.gameService.addGame(game);
     }
 
-    // Suscribirse al observable para obtener los juegos actualizados
-    this.gameService.games$.subscribe(updatedGames => {
-      console.log('Juegos después de agregar:', updatedGames);
-      this.games = updatedGames;
+    // Obtener juegos desde el servicio y almacenarlos localmente
+    this.games = this.gameService.getGames();
+
+    // Obtener el valor del parámetro de la ruta
+    this.route.paramMap.subscribe((params) => {
+      this.genreFilter = params.get('genre');
+      this.updateFilteredGames();
     });
   }
 
-  navigateToGameSell(game: Game) {
-    this.router.navigate(['/sell-form']);
+  filterByGenre(genre: string): void {
+    this.genreFilter = genre;
+    this.updateFilteredGames();
   }
 
-  navigateToGameLend() {
-    this.router.navigate(['lend-form']);
+  private updateFilteredGames(): void {
+    if (!this.genreFilter) {
+      this.filteredGames = this.games;
+    } else {
+      this.filteredGames = this.games.filter(
+        (game) => game.genre.name === this.genreFilter
+      );
+    }
+    console.log('Juegos filtrados:', this.filteredGames);
   }
 }
+
+
+
+
+
+
+
+
+// import { Component, Input, OnInit } from '@angular/core';
+// import { ActivatedRoute } from '@angular/router';
+
+// @Component({
+//   selector: 'app-game-list',
+//   templateUrl: './game-list.component.html',
+//   styleUrls: ['./game-list.component.css'],
+// })
+// export class GameListComponent implements OnInit {
+//   @Input() games: any[] = [
+//     {
+//       id: 0,
+//       name: "The Witcher 3: Wild Hunt",
+//       reqCpu: {
+//         CPU: "Intel Core i5-2500K 3.3GHz / AMD Phenom II X4",
+//         RAM: "6 GB",
+//         HDD: "35 GB"
+//       },
+//       genre: {
+//         name: "Adventure",
+//         PEGI: "PEGI 18"
+//       },
+//       price: "$29.99",
+//       gameType: "Single Player"
+//     },
+//     {
+//       id: 1,
+//       name: "Uncharted 4: A Thief's End",
+//       reqCpu: {
+//         CPU: "Intel Core i5-3470 3.2GHz / AMD FX-8350",
+//         RAM: "8 GB",
+//         HDD: "50 GB"
+//       },
+//       genre: {
+//         name: "Adventure",
+//         PEGI: "PEGI 16"
+//       },
+//       price: "$39.99",
+//       gameType: "Single Player"
+//     },
+//     {
+//       id: 2,
+//       name: "The Legend of Zelda",
+//       reqCpu: {
+//         CPU: "Intel Core i5-7500 / AMD Ryzen 5 1600X",
+//         RAM: "8 GB",
+//         HDD: "30 GB"
+//       },
+//       genre: {
+//         name: "Adventure",
+//         PEGI: "PEGI 12"
+//       },
+//       price: "$49.99",
+//       gameType: "Single Player"
+//     },
+
+//     // Acción:
+//     {
+//       id: 3,
+//       name: "Call of Duty:Warfare",
+//       reqCpu: {
+//         CPU: "Intel Core i5-2500K / AMD Ryzen R5 1600X",
+//         RAM: "12 GB",
+//         HDD: "175 GB"
+//       },
+//       genre: {
+//         name: "Action",
+//         PEGI: "PEGI 18"
+//       },
+//       price: "$59.99",
+//       gameType: "Multiplayer"
+//     },
+//     {
+//       id: 4,
+//       name: "Devil May Cry 5",
+//       reqCpu: {
+//         CPU: "Intel Core i7-4770 3.4GHz / AMD Ryzen 5 1600",
+//         RAM: "8 GB",
+//         HDD: "35 GB"
+//       },
+//       genre: {
+//         name: "Action",
+//         PEGI: "PEGI 18"
+//       },
+//       price: "$44.99",
+//       gameType: "Single Player"
+//     },
+
+//     // Estrategia:
+//     {
+//       id: 5,
+//       name: "Sid Meier's Civilization VI",
+//       reqCpu: {
+//         CPU: " Intel Core i5-3470 3.2GHz / AMD FX-8350",
+//         RAM: "8 GB",
+//         HDD: "12 GB"
+//       },
+//       genre: {
+//         name: "Strategy",
+//         PEGI: "PEGI 12"
+//       },
+//       price: "$29.99",
+//       gameType: "Single Player"
+//     },
+//     {
+//       id: 6,
+//       name: "StarCraft II: Wings of Liberty",
+//       reqCpu: {
+//         CPU: "Intel Core i3-530 / AMD Phenom II X4 910",
+//         RAM: "4 GB",
+//         HDD: "30 GB"
+//       },
+//       genre: {
+//         name: "Strategy",
+//         PEGI: "PEGI 12"
+//       },
+//       price: "$19.99",
+//       gameType: "Multiplayer"
+//     }
+//     // Puedes agregar más juegos según tus necesidades
+//   ];
+
+//   filteredGames: any[] = [];
+//   genreFilter: string | null = null;
+
+//   constructor(private route: ActivatedRoute) { }
+
+//   ngOnInit(): void {
+//     // Obtener el valor del parámetro de la ruta
+//     this.route.paramMap.subscribe(params => {
+//       this.genreFilter = params.get('genre');
+//       this.updateFilteredGames();
+//     });
+//   }
+
+//   private updateFilteredGames(): void {
+//     if (!this.genreFilter) {
+//       this.filteredGames = this.games;
+//     } else {
+//       this.filteredGames = this.games.filter(game => game.genre.name === this.genreFilter);
+//     }
+//   }
+// }

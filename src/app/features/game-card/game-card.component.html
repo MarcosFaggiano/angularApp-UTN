@@ -1,0 +1,12 @@
+<!-- game-card.component.html -->
+<div class="game-card">
+  <!-- Contenido del juego, por ejemplo, título y detalles -->
+
+  <div *ngIf="comprar">
+    <button (click)="realizarCompra()">Comprar</button>
+  </div>
+
+  <div *ngIf="compartir">
+    <button (click)="compartirJuego()">Compartir</button>
+  </div>
+</div>

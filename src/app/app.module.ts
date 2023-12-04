@@ -1,25 +1,35 @@
+// app.module.ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FeaturesModule } from './features/features.module';//solo me traigo este que tiene adentro los demas englobados
+import { GameListComponent } from './features/game-list/game-list.component';
+import { GameCardComponent } from './features/game-card/game-card.component';
+import { GameFormComponent } from './features/game-form/game-form.component';
+import { LendFormComponent } from './features/lend-form/lend-form.component';
+import { HomeComponent } from './home/home.component';
+import { SellFormComponent } from './features/sell-form/sell-form.component';
 import { HeaderComponent } from './core/components/header/header.component';
-import { FormsModule } from '@angular/forms';// importamos para poder usar fomularios
-import { GameService } from './game.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    GameListComponent,
+    GameCardComponent,
+    GameFormComponent,
+    LendFormComponent,
+    HomeComponent,
+    SellFormComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FeaturesModule, // Registra el módulo de características
-    FormsModule // Agrega FormsModule aquí
+    FormsModule
   ],
-  providers: [GameService], // lo tengo que incluir para que valla a toda la app
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
 
