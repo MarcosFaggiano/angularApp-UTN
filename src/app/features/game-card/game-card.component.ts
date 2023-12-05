@@ -1,5 +1,5 @@
-// game-card.component.ts
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-card',
@@ -11,15 +11,21 @@ export class GameCardComponent {
   @Input() comprar: boolean | undefined;
   @Input() compartir: boolean | undefined;
 
-  // Agrega estos métodos
+  constructor(private router: Router) { }
+
   realizarCompra(): void {
     // Lógica para realizar la compra
     console.log('Compra realizada');
+    // Agrega la navegación a la ruta 'sell-form' después de realizar la compra
+    this.router.navigate(['/sell-form']);
   }
 
   compartirJuego(): void {
     // Lógica para compartir el juego
     console.log('Juego compartido');
+    // Agrega la navegación a la ruta 'lend-form' después de compartir el juego
+    this.router.navigate(['/lend-form']);
   }
 }
+
 

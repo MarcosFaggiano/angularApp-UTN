@@ -20,7 +20,8 @@ export class GameService {
         PEGI: "PEGI 18"
       },
       price: "$29.99",
-      gameType: "Single Player"
+      gameType: "Single Player",
+      imageUrl: "../assets/img/The Witcher 3 - Wild Hunt.jpg"
     },
     {
       id: 1,
@@ -35,7 +36,8 @@ export class GameService {
         PEGI: "PEGI 16"
       },
       price: "$39.99",
-      gameType: "Single Player"
+      gameType: "Single Player",
+      imageUrl: "../assets/img/Uncharted 4 - A Thief's End.jpg"
     },
     {
       id: 2,
@@ -50,7 +52,8 @@ export class GameService {
         PEGI: "PEGI 12"
       },
       price: "$49.99",
-      gameType: "Single Player"
+      gameType: "Single Player",
+      imageUrl: "../assets/img/The Legend of Zelda.jpg"
     },
 
     // Acción:
@@ -67,7 +70,8 @@ export class GameService {
         PEGI: "PEGI 18"
       },
       price: "$59.99",
-      gameType: "Multiplayer"
+      gameType: "Multiplayer",
+      imageUrl: "../assets/img/Call of Duty -Warfare.jpg"
     },
     {
       id: 4,
@@ -82,7 +86,8 @@ export class GameService {
         PEGI: "PEGI 18"
       },
       price: "$44.99",
-      gameType: "Single Player"
+      gameType: "Single Player",
+      imageUrl: "../assets/img/Devil May Cry 5.jpg"
     },
 
     // Estrategia:
@@ -99,7 +104,8 @@ export class GameService {
         PEGI: "PEGI 12"
       },
       price: "$29.99",
-      gameType: "Single Player"
+      gameType: "Single Player",
+      imageUrl: "../assets/img/Sid Meier's Civilization VI.jpg"
     },
     {
       id: 6,
@@ -114,7 +120,8 @@ export class GameService {
         PEGI: "PEGI 12"
       },
       price: "$19.99",
-      gameType: "Multiplayer"
+      gameType: "Multiplayer",
+      imageUrl: "../assets/img/StarCraft II - Wings of Liberty.jpg"
     }
   ]; // Almacena la lista de juegos
   games$ = new BehaviorSubject<any[]>([]); // Observable para notificar cambios en los juegos

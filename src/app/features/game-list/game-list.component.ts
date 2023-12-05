@@ -19,6 +19,7 @@ interface Game {
   };
   price: string;
   gameType: string;
+  imageUrl: string;  // Agrega esta línea para la imagen
 }
 
 @Component({
