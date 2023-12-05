@@ -11,13 +11,12 @@ export class LendFormComponent {
   friendEmail: string = '';
 
   shareGame() {
-    // Crear un objeto con los datos del formulario
+
     const formData = {
       gameTitle: this.gameTitle,
       friendEmail: this.friendEmail
     };
 
-    // Mostrar el objeto en la consola
     console.log('Datos del formulario:', formData);
 
   }

@@ -1,7 +1,4 @@
 <div class="toolbar" role="banner">
-  <div>
-    <!-- <img width="" alt="" src="" /> -->
-  </div>
   <span>EsTim</span>
   <nav>
     <ul>
@@ -10,21 +7,15 @@
           <i class="fas fa-home"></i> Home
         </a>
       </li>
-      <!-- <li><a routerLink="/game-list">Game List</a></li>
-      <li><a routerLink="/game-form">Game Form</a></li>
-      <li><a routerLink="/sell-form">Sell Form</a></li>
-      <li><a routerLink="/lend-form">Lend Form</a></li> -->
     </ul>
   </nav>
-
-  <!-- Botones de género -->
-  <button type="button" class="btn btn-info btn-sm ml-2" (click)="filterByGenre('Adventure')">Adventure</button>
-  <button type="button" class="btn btn-info btn-sm ml-2" (click)="filterByGenre('Action')">Action</button>
-  <button type="button" class="btn btn-info btn-sm ml-2" (click)="filterByGenre('Strategy')">Strategy</button>
-  <!-- Agrega más botones según tus géneros -->
-
-  <button type="button" class="btn btn-danger btn-sm ml-auto" (click)="navigateToGameForm()">
+  <div class="toolbar-buttons"> <!-- Nuevo contenedor para los botones -->
+    <button type="button" class="btn btn-info btn-sm" (click)="filterByGenre('Adventure')">Adventure</button>
+    <button type="button" class="btn btn-info btn-sm" (click)="filterByGenre('Action')">Action</button>
+    <button type="button" class="btn btn-info btn-sm" (click)="filterByGenre('Strategy')">Strategy</button>
+  </div>
+  <button type="button" class="btn btn-danger btn-sm ml-auto" style="margin-left: 10px; margin-right: 10px;"
+    (click)="navigateToGameForm()">
     Cargar Juegos
   </button>
-
 </div>

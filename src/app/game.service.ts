@@ -1,4 +1,4 @@
-// game.service.ts
+
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -123,7 +123,7 @@ export class GameService {
       gameType: "Multiplayer",
       imageUrl: "../assets/img/StarCraft II - Wings of Liberty.jpg"
     }
-  ]; // Almacena la lista de juegos
+  ];
   games$ = new BehaviorSubject<any[]>([]); // Observable para notificar cambios en los juegos
 
   addGame(game: any): void {
@@ -134,7 +134,7 @@ export class GameService {
 
 
   getGameById(id: number): any | undefined {
-    // Obtener un juego por ID
+
     return this.games.find((game) => game.id === id);
   }
 

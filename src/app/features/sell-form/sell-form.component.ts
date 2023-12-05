@@ -15,6 +15,7 @@ interface Game {
   };
   price: string;
   gameType: string;
+  shippingMethod: string;
 }
 
 @Component({
@@ -30,7 +31,8 @@ export class SellFormComponent implements OnInit {
     game: null as Game | null,
     buyerName: "",
     price: "",
-    paymentMethod: ""
+    paymentMethod: "",
+    shippingMethod: ""
   };
 
   constructor(private route: ActivatedRoute, private router: Router) { }
@@ -50,6 +52,5 @@ export class SellFormComponent implements OnInit {
 
   submitForm() {
     console.log(this.sale);
-    // Agrega la lógica adicional, como enviar la venta a un servicio, etc.
   }
 }

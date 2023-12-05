@@ -1,24 +1,5 @@
-<!-- Muestra la lista de juegos en forma de tarjetas en filas de a 3 -->
-<!-- Muestra la lista de juegos en forma de tarjetas en filas de a 3 -->
 <div class="row">
   <div *ngFor="let game of filteredGames" class="col-md-4 mb-3">
     <app-game-card [game]="game" [comprar]="true" [compartir]="true"></app-game-card>
   </div>
 </div>
-
-<!-- <div class="row">
-  <div *ngFor="let game of filteredGames" class="col-md-4 mb-3">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">{{ game.name }}</h5>
-        <img [src]="game.imageUrl" class="card-img-top" alt="{{ game.name }} Image">
-        <p class="card-text">CPU: {{ game.reqCpu.CPU }}</p>
-        <p class="card-text">RAM: {{ game.reqCpu.RAM }}</p>
-        <p class="card-text">HDD: {{ game.reqCpu.HDD }}</p>
-        <p class="card-text">Genre: {{ game.genre.name }} (PEGI: {{ game.genre.PEGI }})</p>
-        <p class="card-text">Price: {{ game.price }}</p>
-        <p class="card-text">Game Type: {{ game.gameType }}</p>
-      </div>
-    </div>
-  </div>
-</div> -->

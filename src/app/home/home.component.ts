@@ -8,12 +8,12 @@ import { GameService } from '../game.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  games: any[] = [];  // No necesitas @Input() aquí
+  games: any[] = [];
 
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
-    // Obtén los juegos del servicio
+
     this.gameService.games$.subscribe(updatedGames => {
       this.games = updatedGames;
     });

@@ -30,7 +30,6 @@ export class GameFormComponent {
     this.gameService.addGame(this.newGame);
     console.log(this.newGame);
 
-    // Restablecer el formulario después de guardar
     this.resetForm();
   }
 

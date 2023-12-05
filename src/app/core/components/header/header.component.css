@@ -10,3 +10,61 @@
   color: white;
   font-weight: 600;
 }
+
+.toolbar-buttons {
+  margin-left: auto; 
+  display: flex;
+  align-items: center;
+  padding: 0%;
+}
+
+.toolbar-buttons button {
+  margin-left: 8px; 
+}
+
+.toolbar-buttons .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: white;
+}
+
+.toolbar-buttons .btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: white;
+}
+
+.toolbar-buttons .btn-primary:hover,
+.toolbar-buttons .btn-success:hover {
+  filter: brightness(90%);
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none; 
+  padding: 0%; 
+  font-weight: bold; 
+  transition: color 0.3s; 
+}
+
+.nav-link:hover {
+  color: #ffc107; 
+}
+
+.nav-link i {
+  margin-right: 8px; 
+}
+
+.toolbar span {
+  font-size: 1.5em; 
+  font-weight: bold; 
+  margin-right: 20px; 
+  color: #fff; 
+}
+
+.toolbar i.fas.fa-home {
+  margin-right: 5px; 
+  color: #fff; 
+}
+
+

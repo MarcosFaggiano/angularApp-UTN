@@ -1,6 +1,6 @@
 <!-- game-card.component.html -->
 <div class="game-card">
-  <!-- Contenido del juego, por ejemplo, título y detalles -->
+
   <div class="game-name">
     <h5 class="card-title">{{ game.name }}</h5>
     <hr class="name-divider">
@@ -13,7 +13,7 @@
   <p class="card-text price">Price: {{ game.price }}</p>
   <p class="card-text">Game Type: {{ game.gameType }}</p>
 
-  <!-- Botones adicionales según tus necesidades -->
+
   <div class="d-flex justify-content-between">
     <div *ngIf="comprar">
       <button class="btn btn-primary" (click)="realizarCompra()">Comprar</button>
@@ -24,22 +24,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-<!-- game-card.component.html -->
-
-
-<!-- <div class="game-card">
-
-
-  <div *ngIf="comprar">
-    <button (click)="realizarCompra()">Comprar</button>
-  </div>
-
-  <div *ngIf="compartir">
-    <button (click)="compartirJuego()">Compartir</button>
-  </div>
-</div> -->

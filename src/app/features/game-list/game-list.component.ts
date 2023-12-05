@@ -19,7 +19,7 @@ interface Game {
   };
   price: string;
   gameType: string;
-  imageUrl: string;  // Agrega esta línea para la imagen
+  imageUrl: string;
 }
 
 @Component({
@@ -41,10 +41,10 @@ export class GameListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    // Agregar ejemplos de juegos al servicio (solo si la lista está vacía)
+
     if (this.gameService.getGames().length === 0) {
       const exampleGames: Game[] = [
-        // ... (juegos de ejemplo)
+
       ];
 
       for (const game of exampleGames) {
@@ -52,16 +52,16 @@ export class GameListComponent implements OnInit, OnDestroy {
       }
     }
 
-    // Obtener juegos desde el servicio y almacenarlos localmente
+
     this.games = this.gameService.getGames();
 
-    // Obtener el valor del parámetro de la ruta
+
     this.route.paramMap.subscribe((params) => {
       this.genreFilter = params.get('genre');
       this.updateFilteredGames();
     });
 
-    // Suscribirse a cambios en los juegos y actualizar la lista filtrada
+
     this.gameService.games$
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(() => this.updateFilteredGames());
@@ -81,7 +81,7 @@ export class GameListComponent implements OnInit, OnDestroy {
     }
     console.log('Juegos filtrados:', this.filteredGames);
 
-    // Forzar la detección de cambios
+
     this.cdr.detectChanges();
   }
 
