@@ -13,12 +13,12 @@ export class HomeComponent implements OnInit {
   constructor(private gameService: GameService) { }
 
   ngOnInit() {
-
-    this.gameService.games$.subscribe(updatedGames => {
+    this.gameService.getGamesObservable().subscribe(updatedGames => {
       this.games = updatedGames;
     });
   }
 }
+
 
 
 
