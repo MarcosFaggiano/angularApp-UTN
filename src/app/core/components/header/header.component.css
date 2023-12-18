@@ -66,5 +66,16 @@
   margin-right: 5px; 
   color: #fff; 
 }
-
+.main-title {
+  font-family: 'TuFuente', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0; /* Elimina el margen predeterminado para mejorar la alineación */
+  padding: 0; /* Elimina el relleno predeterminado para mejorar la alineación */
+  text-transform: uppercase; /* Convierte el texto a mayúsculas */
+  letter-spacing: 2px; /* Agrega espacio entre letras para mejorar la legibilidad */
+  /* Otros estilos que desees agregar */
+  margin-left: 10px;
+}
 

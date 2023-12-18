@@ -1,0 +1,38 @@
+/* form.component.css */
+/* Estilos para la tarjeta */
+.card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  margin-bottom: 40px;
+  transition: transform 0.3s ease;
+  width: 300px;
+  height: auto; /* Cambia la altura a "auto" para que se ajuste dinámicamente al contenido */
+}
+
+/* Efecto de zoom al pasar el ratón por la tarjeta */
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Estilos para la imagen */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Estilos para el nombre del juego */
+.card .form-group:first-child span {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #3498db;
+}
+
+/* Estilos para el precio del juego */
+.card .form-group:last-child span {
+  font-size: 1.8em;
+  color: #27ae60;
+}
+

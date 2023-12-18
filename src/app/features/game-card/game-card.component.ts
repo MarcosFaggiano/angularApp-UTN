@@ -14,14 +14,13 @@ export class GameCardComponent {
   constructor(private router: Router) { }
 
   realizarCompra(): void {
-
     console.log('Compra realizada');
-    this.router.navigate(['/sell-form']);
+    this.router.navigate(['/sell-form', this.game.id]);
   }
 
   compartirJuego(): void {
     console.log('Juego compartido');
-    this.router.navigate(['/lend-form']);
+    this.router.navigate(['/lend-form', this.game.id]);
   }
 }
 

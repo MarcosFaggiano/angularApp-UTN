@@ -12,6 +12,8 @@ import { SellFormComponent } from './features/sell-form/sell-form.component';
 import { HeaderComponent } from './core/components/header/header.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormComponent } from './core/components/form/form.component';
+import { NotFoundComponent } from './core/components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     LendFormComponent,
     HomeComponent,
     SellFormComponent,
-    HeaderComponent
+    HeaderComponent,
+    FormComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

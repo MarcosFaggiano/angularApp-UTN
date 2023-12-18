@@ -1,41 +1,5 @@
+<!-- sell-form.component.html -->
 <div class="content" role="main">
-  <h2>Compra tu Juego!</h2>
-  <form (submit)="submitForm()">
-
-    <div class="form-group">
-      <label for="buyerName">Nombre del Comprador:</label>
-      <input type="text" id="buyerName" name="buyerName" [(ngModel)]="sale.buyerName" class="form-control" required>
-    </div>
-
-    <div class="form-group">
-      <label for="price">Precio de Venta:</label>
-      <input type="text" id="price" name="price" [(ngModel)]="sale.price" class="form-control" required>
-    </div>
-
-    <div class="icons">
-      <img src="https://i.imgur.com/2ISgYja.png" width="30">
-      <img src="https://i.imgur.com/W1vtnOV.png" width="30">
-      <img src="https://i.imgur.com/35tC99g.png" width="30">
-      <img src="https://i.imgur.com/2ISgYja.png" width="30">
-    </div>
-
-    <div class="form-group">
-      <label for="paymentMethod">Método de Pago:</label>
-      <select id="paymentMethod" name="paymentMethod" [(ngModel)]="sale.paymentMethod" class="form-control" required>
-        <option value="efectivo">Efectivo</option>
-        <option value="tarjeta_credito">Tarjeta de Crédito</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="shippingMethod">Método de Envío:</label>
-      <select id="shippingMethod" name="shippingMethod" [(ngModel)]="sale.shippingMethod" class="form-control" required>
-        <option value="correo">Correo</option>
-        <option value="retira_local">Retira en Local</option>
-      </select>
-    </div>
-
-    <br>
-    <button type="submit" class="btn btn-success">Vender</button>
-  </form>
+  <h2>Vende tu Juego!</h2>
+  <app-form [sale]="sale" [buttonText]="'Comprar'" (formSubmit)="submitForm()"></app-form>
 </div>

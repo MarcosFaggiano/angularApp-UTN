@@ -1,14 +1,15 @@
 <div class="toolbar" role="banner">
-  <span>EsTim</span>
+  <span class="main-title">EsTim</span>
   <nav>
     <ul>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/">
-          <i class="fas fa-home"></i> Home
-        </a>
-      </li>
+      <a class="nav-link" routerLink="/" style="display: flex; align-items: center;">
+        <img src="../../../../assets/img/gaming.png" alt="Icono Home"
+          style="width: 0.9cm; height: 0.9cm; margin-right: 0.2cm; margin-top: 10px;">
+        <p style="margin: 0;">Home</p>
+      </a>
     </ul>
   </nav>
+
   <div class="toolbar-buttons"> <!-- Nuevo contenedor para los botones -->
     <button type="button" class="btn btn-info btn-sm" (click)="filterByGenre('Adventure')">Adventure</button>
     <button type="button" class="btn btn-info btn-sm" (click)="filterByGenre('Action')">Action</button>

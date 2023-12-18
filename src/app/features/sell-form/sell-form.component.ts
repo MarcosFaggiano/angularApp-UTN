@@ -1,56 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-
-interface Game {
-  id: number;
-  name: string;
-  reqCpu: {
-    CPU: string;
-    RAM: string;
-    HDD: string;
-  };
-  genre: {
-    name: string;
-    PEGI: string;
-  };
-  price: string;
-  gameType: string;
-  shippingMethod: string;
-}
+// sell-form.component.ts
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-sell-form',
   templateUrl: './sell-form.component.html',
   styleUrls: ['./sell-form.component.css']
 })
-export class SellFormComponent implements OnInit {
+export class SellFormComponent {
 
-  gameList: Game[] = [];
-
-  sale = {
-    game: null as Game | null,
-    buyerName: "",
-    price: "",
-    paymentMethod: "",
-    shippingMethod: ""
-  };
-
-  constructor(private route: ActivatedRoute, private router: Router) { }
-
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      const gameId = params['id'];
-      if (gameId) {
-        this.sale.game = this.findGameById(+gameId);
-      }
-    });
-  }
-
-  findGameById(id: number): Game | null {
-    return this.gameList.find(game => game.id === id) || null;
-  }
+  sale: any = {}; // Ajusta el tipo según tu aplicación
 
   submitForm() {
-    console.log(this.sale);
+    // Agregar aquí la lógica para vender el juego
   }
 }
+

@@ -7,15 +7,19 @@ import { GameCardComponent } from './features/game-card/game-card.component';
 import { GameFormComponent } from './features/game-form/game-form.component';
 import { SellFormComponent } from './features/sell-form/sell-form.component';
 import { LendFormComponent } from './features/lend-form/lend-form.component';
+import { FormComponent } from './core/components/form/form.component';
+import { NotFoundComponent } from './core/components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'game-list/:genre', component: GameListComponent }, // Cambiado aquí
   { path: 'game-card', component: GameCardComponent },
   { path: 'game-form', component: GameFormComponent },
-  { path: 'sell-form', component: SellFormComponent },
-  { path: 'lend-form', component: LendFormComponent },
-  { path: '**', component: GameListComponent },
+  { path: 'sell-form/:id', component: SellFormComponent },
+  { path: 'lend-form/:id', component: LendFormComponent },
+  { path: 'form', component: FormComponent },
+  { path: 'not-found', component: NotFoundComponent }, // Agrega una ruta para página no encontrada
+  { path: '**', component: GameListComponent }, // Redirige cualquier ruta no encontrada a la página no encontrada
 ];
 
 @NgModule({

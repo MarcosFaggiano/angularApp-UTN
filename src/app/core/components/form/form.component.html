@@ -1,0 +1,84 @@
+<div class="content" role="main">
+  <form (submit)="submitForm()" class="row">
+
+    <!-- Columna Izquierda: Nombre del Juego, Imagen, Precio -->
+    <div class="col-md-4 card">
+      <div class="form-group">
+        <label for="gameName" class="card-title"></label>
+        <span class="card-text">{{ sale.game?.name }}</span>
+      </div>
+
+      <div class="form-group">
+        <img [src]="sale.game?.imageUrl" alt="Game Image" width="100%" class="card-img-top">
+      </div>
+
+      <div class="form-group">
+        <label for="gamePrice" class="card-text">Precio del Juego:</label>
+        <span class="card-text">{{ sale.game?.price }}</span>
+      </div>
+    </div>
+
+    <!-- Columna Central: Resto de los Datos -->
+    <div class="col-md-4 card">
+      <div class="form-group">
+        <label for="buyerName" class="card-title">Nombre y Apellido:</label>
+        <input type="text" id="buyerName" name="buyerName" [(ngModel)]="sale.buyerName" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="buyerEmail" class="card-title">Correo Electrónico:</label>
+        <input type="email" id="buyerEmail" name="buyerEmail" [(ngModel)]="sale.buyerEmail" class="form-control"
+          required>
+      </div>
+      <!-- tiempo de prestamo -->
+      <div *ngIf="isLendForm" class="form-group">
+        <label for="loanDuration" class="card-title">Tiempo de Préstamo (en días):</label>
+        <input type="number" id="loanDuration" name="loanDuration" [(ngModel)]="sale.loanDuration" class="form-control"
+          required (input)="onLoanDurationInput($event)">
+      </div>
+
+
+      <div class="form-group">
+        <label for="paymentMethod" class="card-title">Método de Pago:</label>
+        <select id="paymentMethod" name="paymentMethod" [(ngModel)]="sale.paymentMethod" class="form-control" required>
+          <option value="efectivo">Efectivo</option>
+          <option value="tarjeta_credito">Tarjeta de Crédito</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn bt-sm btn-success mt-3">{{ buttonText }}</button>
+    </div>
+
+    <!-- Columna Derecha: Botón de Venta -->
+    <!-- Columna Derecha: Botón de Venta -->
+    <div class="col-md-4 card">
+      <div *ngIf="sale.paymentMethod === 'tarjeta_credito' || !sale.paymentMethod" class="form-group">
+        <!-- Campos para información de la tarjeta -->
+        <div class="form-group">
+          <label for="cardName" class="card-title">Nombre de la Tarjeta:</label>
+          <input type="text" id="cardName" name="cardName" [(ngModel)]="sale.cardName" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+          <label for="cardNumber" class="card-title">Número de Tarjeta:</label>
+          <input type="text" id="cardNumber" name="cardNumber" [(ngModel)]="sale.cardNumber" class="form-control"
+            required>
+        </div>
+
+        <div class="form-group">
+          <label for="expiryDate" class="card-title">Fecha de Vencimiento:</label>
+          <input type="date" id="expiryDate" name="expiryDate" [(ngModel)]="sale.expiryDate" class="form-control"
+            required>
+          <!-- Puedes usar una librería como ngx-mask para formatear la fecha automáticamente -->
+        </div>
+
+        <div class="form-group">
+          <label for="securityCode" class="card-title">Código de Seguridad:</label>
+          <input type="text" id="securityCode" name="securityCode" [(ngModel)]="sale.securityCode" class="form-control"
+            required>
+        </div>
+      </div>
+    </div>
+
+  </form>
+</div>

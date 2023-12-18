@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormComponent } from 'src/app/core/components/form/form.component';
 
 @Component({
   selector: 'app-lend-form',
@@ -7,18 +8,14 @@ import { Component } from '@angular/core';
 })
 export class LendFormComponent {
 
-  gameTitle: string = '';
-  friendEmail: string = '';
+  sale: any = { game: {} };
 
-  shareGame() {
-
-    const formData = {
-      gameTitle: this.gameTitle,
-      friendEmail: this.friendEmail
-    };
-
-    console.log('Datos del formulario:', formData);
-
+  lendForm() {
+    console.log(this.sale);
+    // Agrega aquí la lógica para compartir el juego
   }
-
 }
+
+
+
+

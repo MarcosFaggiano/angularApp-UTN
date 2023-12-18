@@ -39,6 +39,8 @@ export class GameListComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    console.log('GameListComponent initialized');
+    // Suscripción a getGamesObservable() solo una vez
     this.gameService.getGamesObservable()
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((games) => {
@@ -52,10 +54,8 @@ export class GameListComponent implements OnInit, OnDestroy {
           for (const game of exampleGames) {
             this.gameService.addGame(game).subscribe(() => {
               // Recargar la lista de juegos después de agregar uno nuevo
-              this.gameService.getGamesObservable().subscribe((updatedGames) => {
-                this.games = updatedGames;
-                this.updateFilteredGames();
-              });
+              this.games.push(game);
+              this.updateFilteredGames();
             });
           }
         } else {
@@ -68,11 +68,8 @@ export class GameListComponent implements OnInit, OnDestroy {
       this.genreFilter = params.get('genre');
       this.updateFilteredGames();
     });
-
-    this.gameService.getGamesObservable()
-      .pipe(takeUntil(this.unsubscribe$))
-      .subscribe(() => this.updateFilteredGames());
   }
+
 
   filterByGenre(genre: string): void {
     this.genreFilter = genre;
