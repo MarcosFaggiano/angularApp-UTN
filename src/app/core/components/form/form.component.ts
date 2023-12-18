@@ -1,4 +1,3 @@
-// form.component.ts
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GameService } from '../../../game.service';
@@ -10,9 +9,11 @@ import { GameService } from '../../../game.service';
 })
 export class FormComponent {
 
-  @Input() sale: any = { game: {}, loanDuration: 7 }; // Agrega la propiedad loanDuration con un valor predeterminado
-  @Input() isLendForm: boolean = false; // Nuevo atributo para indicar si es un formulario de préstamo
-  @Input() buttonText: string = 'Comprar'; // Añade un nuevo atributo de entrada para el texto del botón
+  @Input() sale: any = { game: {}, loanDuration: 7 };
+  @Input() isLendForm: boolean = false;
+  @Input() buttonText: string = 'Comprar';
+  @Input() buyerNameLabel: string = 'Nombre y Apellido';
+  @Input() buyerEmailLabel: string = 'Correo Electrónico';
   @Output() formSubmit = new EventEmitter<void>();
 
   gameList: any[] = [];
@@ -54,16 +55,12 @@ export class FormComponent {
 
   onLoanDurationInput(event: Event): void {
     const inputValue = (event.target as HTMLInputElement).value;
-    const numericValue = parseFloat(inputValue);
+    const numericValue = parseInt(inputValue, 10);
 
     if (this.isLendForm) {
-      // Si el valor ingresado no es un número válido, establece loanDuration en 0
-      this.sale.loanDuration = isNaN(numericValue) ? 0 : Math.max(0, numericValue);
+      this.sale.loanDuration = isNaN(numericValue) || numericValue < 1 ? 1 : numericValue;
     }
   }
 
+
 }
-
-
-
-

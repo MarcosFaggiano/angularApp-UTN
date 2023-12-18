@@ -1,4 +1,3 @@
-// sell-form.component.ts
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,10 +7,8 @@ import { Component } from '@angular/core';
 })
 export class SellFormComponent {
 
-  sale: any = {}; // Ajusta el tipo según tu aplicación
+  sale: any = {};
 
-  submitForm() {
-    // Agregar aquí la lógica para vender el juego
-  }
+  submitForm() { }
 }
 

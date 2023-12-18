@@ -1,20 +1,20 @@
 <div class="content" role="main">
-  <h2>Cargar Juego</h2>
+  <h2 style="font-weight: bold; color: white;">Cargar Juego</h2>
   <form (submit)="submitForm()">
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
-          <label for="name">Nombre del Juego:</label>
+          <label class="game-form-letra" for="name">Nombre del Juego:</label>
           <input type="text" id="name" name="name" [(ngModel)]="newGame.name" class="form-control" required>
         </div>
 
         <div class="form-group">
-          <label for="price">Precio:</label>
+          <label class="game-form-letra" for="price">Precio:</label>
           <input type="text" id="price" name="price" [(ngModel)]="newGame.price" class="form-control" required>
         </div>
 
         <div class="form-group">
-          <label for="isDLS">¿Es DLC?</label>
+          <label class="game-form-letra" for="isDLS">¿Es DLC?</label>
           <select id="isDLS" name="isDLS" [(ngModel)]="newGame.isDLS" class="form-control" required>
             <option value="true">Sí</option>
             <option value="false">No</option>
@@ -22,19 +22,19 @@
         </div>
 
         <div class="form-group">
-          <label for="cpu">CPU:</label>
+          <label class="game-form-letra" for="cpu">CPU:</label>
           <input type="text" id="cpu" name="cpu" [(ngModel)]="newGame.reqCpu.CPU" class="form-control" required
             [disabled]="newGame.isDLS === 'true'">
         </div>
 
         <div class="form-group">
-          <label for="ram">RAM:</label>
+          <label class="game-form-letra" for="ram">RAM:</label>
           <input type="text" id="ram" name="ram" [(ngModel)]="newGame.reqCpu.RAM" class="form-control" required
             [disabled]="newGame.isDLS === 'true'">
         </div>
 
         <div class="form-group">
-          <label for="hdd">HDD:</label>
+          <label class="game-form-letra" for="hdd">HDD:</label>
           <input type="text" id="hdd" name="hdd" [(ngModel)]="newGame.reqCpu.HDD" class="form-control" required
             [disabled]="newGame.isDLS === 'true'">
         </div>
@@ -42,13 +42,13 @@
 
       <div class="col-md-6">
         <div class="form-group">
-          <label for="genre">Género:</label>
+          <label class="game-form-letra" for="genre">Género:</label>
           <input type="text" id="genre" name="genre" [(ngModel)]="newGame.genre.name" class="form-control" required
             [disabled]="newGame.isDLS === 'true'">
         </div>
 
         <div class="form-group">
-          <label for="pegi">PEGI:</label>
+          <label class="game-form-letra" for="pegi">PEGI:</label>
           <input type="text" id="pegi" name="pegi" [(ngModel)]="newGame.genre.PEGI" class="form-control" required
             [disabled]="newGame.isDLS === 'true'">
         </div>

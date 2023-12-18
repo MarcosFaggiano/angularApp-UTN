@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormComponent } from 'src/app/core/components/form/form.component';
+
 
 @Component({
   selector: 'app-lend-form',
@@ -12,7 +12,7 @@ export class LendFormComponent {
 
   lendForm() {
     console.log(this.sale);
-    // Agrega aquí la lógica para compartir el juego
+
   }
 }
 

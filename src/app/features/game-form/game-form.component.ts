@@ -29,11 +29,9 @@ export class GameFormComponent {
 
   submitForm() {
     if (this.newGame.isDLS === 'true') {
-      // Si es DLS, guardar solo el nombre y el precio
       const { name, price } = this.newGame;
       this.gameService.addGame({ name, price, isDLS: 'true' });
     } else {
-      // Si no es DLS, guardar todos los campos
       this.gameService.addGame(this.newGame);
     }
 

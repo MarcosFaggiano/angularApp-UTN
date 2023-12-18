@@ -1,4 +1,8 @@
 <div class="content" role="main">
-  <h2>Compra tu Juego!</h2>
-  <app-form [sale]="sale" [isLendForm]="true" [buttonText]="'Prestar'" (formSubmit)="lendForm()"></app-form>
+  <h2 class="lend-style">Comparte un Juego!</h2>
+  <app-form [sale]="sale" [isLendForm]="true" [buttonText]="'Comparte'"
+    [buyerNameLabel]="'Nombre y Apellido de tu amigo'" [buyerEmailLabel]="'Correo electrónico de tu amigo'"
+    (formSubmit)="lendForm()"></app-form>
+
+  <p>Loan Duration: {{ sale.loanDuration }}</p>
 </div>

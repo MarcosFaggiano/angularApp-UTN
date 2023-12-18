@@ -40,7 +40,7 @@ export class GameListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     console.log('GameListComponent initialized');
-    // Suscripción a getGamesObservable() solo una vez
+
     this.gameService.getGamesObservable()
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe((games) => {
@@ -48,12 +48,10 @@ export class GameListComponent implements OnInit, OnDestroy {
 
         if (this.games.length === 0) {
           const exampleGames: Game[] = [
-            // ... tus ejemplos de juegos
           ];
 
           for (const game of exampleGames) {
             this.gameService.addGame(game).subscribe(() => {
-              // Recargar la lista de juegos después de agregar uno nuevo
               this.games.push(game);
               this.updateFilteredGames();
             });
@@ -63,7 +61,6 @@ export class GameListComponent implements OnInit, OnDestroy {
         }
       });
 
-    // Acceder al ActivatedRoute y usar paramMap
     this.route.paramMap.subscribe((params) => {
       this.genreFilter = params.get('genre');
       this.updateFilteredGames();
@@ -95,5 +92,4 @@ export class GameListComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 }
-
 
