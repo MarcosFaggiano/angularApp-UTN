@@ -18,8 +18,9 @@ const routes: Routes = [
   { path: 'lend-form/:id', component: LendFormComponent },
   { path: 'form', component: FormComponent },
   { path: 'not-found', component: NotFoundComponent },
-  { path: '**', component: GameListComponent },
+  { path: '**', redirectTo: '/not-found', pathMatch: 'full' },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

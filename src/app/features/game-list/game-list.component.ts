@@ -48,6 +48,7 @@ export class GameListComponent implements OnInit, OnDestroy {
 
         if (this.games.length === 0) {
           const exampleGames: Game[] = [
+
           ];
 
           for (const game of exampleGames) {
@@ -61,12 +62,11 @@ export class GameListComponent implements OnInit, OnDestroy {
         }
       });
 
-    this.route.paramMap.subscribe((params) => {
-      this.genreFilter = params.get('genre');
+    this.route.params.pipe(takeUntil(this.unsubscribe$)).subscribe((params) => {
+      this.genreFilter = params['genre'];
       this.updateFilteredGames();
     });
   }
-
 
   filterByGenre(genre: string): void {
     this.genreFilter = genre;
@@ -92,4 +92,3 @@ export class GameListComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 }
-

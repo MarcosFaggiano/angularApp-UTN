@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 
-
 @Component({
   selector: 'app-lend-form',
   templateUrl: './lend-form.component.html',

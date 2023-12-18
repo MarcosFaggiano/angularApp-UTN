@@ -16,6 +16,6 @@ export class HeaderComponent {
 
   filterByGenre(genre: string) {
     console.log(`Filtrar por género: ${genre}`);
-    this.router.navigate(['/game-list', { genre }]);
+    this.router.navigate(['/game-list', genre]);
   }
 }
